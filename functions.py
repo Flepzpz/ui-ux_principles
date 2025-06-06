@@ -87,3 +87,27 @@ def return_semester(quarter):
             return 2
         case 4:
             return 2
+        
+def create_header():
+    df = pd.read_csv('csv_sheets\dados_vendas_acai.csv', parse_dates=['data_venda'])
+
+    df['dia_semana'] = df['data_venda'].apply(return_weekday)
+    df['dia_semana_numero'] = df['data_venda'].dt.dayofweek
+    df['mes'] = df['data_venda'].apply(return_month)
+    df['mes_numero'] = df['data_venda'].dt.month
+    df['ano'] = df['data_venda'].dt.year
+    df['hora'] = df['data_venda'].dt.hour
+    df['trimestre'] = df['data_venda'].dt.quarter
+    df['semestre'] = df['trimestre'].apply(return_semester)
+    df['data'] = df['data_venda'].dt.date
+
+    df = df.drop(index=df.loc[df['mes'] == 'Junho'].index)
+
+    #st.dataframe(df)
+
+    year = df['ano'].mode().iloc[0]
+    semester = df['semestre'].mode().iloc[0]
+    st.title(f'Análise de Vendas - {year}/{semester}')
+    st.caption('Para todos os efeitos o mês de junho foi desconsiderado por não ter fechado suas vendas mensais.')
+
+    return df
