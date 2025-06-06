@@ -67,14 +67,19 @@ with column3:
 
 st.divider()
 
-st.header('Tendências de Vendas', divider='grey')
+st.header('Vendas', divider='grey')
 chart_column1, chart_column2 = st.columns(2)
 
-sales_per_year = df.groupby(['mes','mes_numero']).aggregate(receita=('valor_total','sum')).reset_index()
-sales_per_year = sales_per_year.sort_values(by='mes_numero', ascending=True)
-line_chart1 = px.line(sales_per_year, x='mes', y='receita', markers=True, labels={'mes':'Mês', 'receita':'Receita'}, title='Receita Mensal')
+st.header('Receita', divider='grey')
+chart_column3, chart_column4 = st.columns(2)
+
+sales_per_month = df.groupby(['mes','mes_numero']).aggregate(receita=('valor_total','sum')).reset_index()
+sales_per_month = sales_per_month.sort_values(by='mes_numero', ascending=True)
+line_chart1 = px.line(sales_per_month, x='mes', y='receita', markers=True, labels={'mes':'Mês', 'receita':'Receita'}, title='Receita Mensal')
 line_chart1 = line_chart1.update_yaxes(ticklabelposition="inside top")
 
-with chart_column1:
+with chart_column3:
     st.plotly_chart(line_chart1)
+
+st.header('Rankings', divider='grey')
     

@@ -9,6 +9,6 @@ with open('styles\style.css') as file:
     css = file.read()
 st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
 
-pg = st.navigation(['Registro.py', 'Dashboard.py'])
+pg = st.navigation(['Registro.py', 'Dashboard.py', 'Produtos.py'])
 pg.run()
 
