@@ -5,7 +5,7 @@ from functions import filter_df
 
 st.set_page_config(layout='wide')
 
-with open('styles\style.css') as file:
+with open('styles/style.css') as file:
     css = file.read()
 st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
 

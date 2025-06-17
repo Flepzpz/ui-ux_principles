@@ -89,7 +89,7 @@ def return_semester(quarter):
             return 2
         
 def create_header():
-    df = pd.read_csv('csv_sheets\dados_vendas_acai.csv', parse_dates=['data_venda'])
+    df = pd.read_csv('csv_sheets/dados_vendas_acai.csv', parse_dates=['data_venda'])
 
     df['dia_semana'] = df['data_venda'].apply(return_weekday)
     df['dia_semana_numero'] = df['data_venda'].dt.dayofweek

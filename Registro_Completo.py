@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 from functions import filter_df, return_unique
 
-df = pd.read_csv('csv_sheets\dados_vendas_acai.csv', parse_dates=['data_venda'])
+df = pd.read_csv('csv_sheets/dados_vendas_acai.csv', parse_dates=['data_venda'])
 
 st.title('Registro de Vendas')
 column1, column2, column3, column4 = st.columns(4)
