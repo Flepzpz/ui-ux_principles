@@ -6,7 +6,7 @@ from functions import create_header
 
 df = create_header()
 
-st.dataframe(df)
+#st.dataframe(df)
 
 unique_clients = df['cliente'].nunique()
 
